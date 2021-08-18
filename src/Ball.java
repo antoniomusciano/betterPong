@@ -10,7 +10,7 @@ public class Ball {
         public Ball() {
             x = 350;
             y = 250;
-            xVelocity = -.1;
+            xVelocity = -1;
             yVelocity = 2;
         }
 
@@ -48,6 +48,31 @@ public class Ball {
             return (int)y;
         }
 
+
+        public void checkPaddleCollision(Paddle p1, Paddle p2) {
+
+            if (x <= 50) {
+                if (y >= p1.getY() && y <= p1.getY() + 80) {
+                    xVelocity = -xVelocity;
+                }
+
+
+            } else if (x >= 650){
+
+                if (y >= p2.getY() && y <= p2.getY() + 80) {
+
+                    xVelocity = -xVelocity;
+
+
+
+
+                }
+
+
+            }
+
+
+        }
 
 
 }

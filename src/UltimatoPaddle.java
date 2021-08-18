@@ -1,16 +1,20 @@
 import java.awt.*;
 
-public class HumanPaddle implements Paddle{
+public class UltimatoPaddle implements Paddle{
     double y, yVelocity;
     boolean upAcceleration, downAcceleration;
     int player, x;
     final double FRICTION = 0.95;
 
+    Ball b1;
 
-    public HumanPaddle(int player) {
+
+    public UltimatoPaddle(int player, Ball b) {
 
         upAcceleration = false;
         downAcceleration = false;
+
+        b1 = b;
         y = 210;
         yVelocity = 0;
         if (player == 1) {
@@ -22,19 +26,8 @@ public class HumanPaddle implements Paddle{
 
         }
 
-
-    }
-    public void setUpAccel(boolean input) {
-
-        upAcceleration = input;
-
     }
 
-    public void setDownAccel(boolean input) {
-
-        downAcceleration = input;
-
-    }
     public void draw(Graphics g) {
 
         g.setColor(Color.white);
@@ -45,32 +38,8 @@ public class HumanPaddle implements Paddle{
     @Override
     public void move() {
 
-        if (upAcceleration) {
+        y = b1.getY() - 40;
 
-            yVelocity -= 2;
-
-        } else if (downAcceleration) {
-
-            yVelocity += 2;
-
-
-        } else if (!upAcceleration && !downAcceleration) {
-
-            yVelocity *= FRICTION;
-
-
-        }
-
-        if (yVelocity >=5) {
-            yVelocity = 5;
-        } else if (yVelocity <= -5){
-
-            yVelocity = -5;
-
-        }
-
-
-        y += yVelocity;
 
         if (y < 0) {
             y = 0;
