@@ -53,7 +53,7 @@ public class Ball {
 
             if (x <= 50) {
                 if (y >= p1.getY() && y <= p1.getY() + 80) {
-                    xVelocity = -xVelocity;
+                    xVelocity = -xVelocity + .2;
                 }
 
 
@@ -61,7 +61,7 @@ public class Ball {
 
                 if (y >= p2.getY() && y <= p2.getY() + 80) {
 
-                    xVelocity = -xVelocity;
+                    xVelocity = -xVelocity - .2;
 
 
 

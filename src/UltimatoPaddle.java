@@ -11,9 +11,6 @@ public class UltimatoPaddle implements Paddle{
 
     public UltimatoPaddle(int player, Ball b) {
 
-        upAcceleration = false;
-        downAcceleration = false;
-
         b1 = b;
         y = 210;
         yVelocity = 0;
@@ -38,7 +35,7 @@ public class UltimatoPaddle implements Paddle{
     @Override
     public void move() {
 
-        y = b1.getY() - 40;
+        y = b1.getY();
 
 
         if (y < 0) {
