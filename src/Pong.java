@@ -10,16 +10,16 @@ public class Pong extends Applet implements Runnable, KeyListener {
     final int WIDTH = 900, HEIGHT = 500;
     Thread thread;
     Ball b1;
-    HumanPaddle p1;
-    UltimatoPaddle p2;
+    Player1 p1;
+    Player2 p2;
 
 
     public void init() {
 
         this.resize(WIDTH, HEIGHT);
         b1 = new Ball();
-        p1 = new HumanPaddle(1);
-        p2 = new UltimatoPaddle(2, b1);
+        p1 = new Player1(1);
+        p2 = new Player2(2);
         this.addKeyListener(this);
         thread = new Thread(this);
         thread.start();
@@ -30,7 +30,9 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        if(b1.getX() < -10 || b1.getX() > 710) {
+        g.setColor(Color.white);
+        g.drawLine(450,0,450, 500);
+        if(b1.getX() < -10 || b1.getX() > 860) {
             g.setColor(Color.red);
             g.drawString("You Lost", WIDTH/2, HEIGHT/2);
         } else {
@@ -91,6 +93,12 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
 
 
+        } else if (e.getKeyCode() == KeyEvent.VK_Q) {
+
+            p2.setUpAccel(true);
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+
+            p2.setDownAccel(true);
         }
 
     }
@@ -106,6 +114,12 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
             p1.setDownAccel(false);
 
+        } else if (e.getKeyCode() == KeyEvent.VK_Q) {
+
+            p2.setUpAccel(false);
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+
+            p2.setDownAccel(false);
         }
 
     }

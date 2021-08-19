@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Ball {
 
@@ -8,15 +9,15 @@ public class Ball {
         double y;
 
         public Ball() {
-            x = 350;
+            x = 450;
             y = 250;
-            xVelocity = -1;
-            yVelocity = 2;
+            xVelocity = ThreadLocalRandom.current().nextInt(-2, 2 + 1);
+            yVelocity = ThreadLocalRandom.current().nextInt(-2, 2 + 1);
         }
 
         public void draw(Graphics g) {
 
-            g.setColor(Color.orange);
+            g.setColor(Color.white);
             g.fillOval((int)x-10, (int)y-10, 20,20);
 
         }
@@ -57,7 +58,7 @@ public class Ball {
                 }
 
 
-            } else if (x >= 650){
+            } else if (x >= 860){
 
                 if (y >= p2.getY() && y <= p2.getY() + 80) {
 

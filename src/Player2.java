@@ -1,13 +1,13 @@
 import java.awt.*;
 
-public class HumanPaddle implements Paddle{
+public class Player2 implements Paddle{
     double y, yVelocity;
     boolean upAcceleration, downAcceleration;
     int player, x;
     final double FRICTION = 0.95;
 
 
-    public HumanPaddle(int player) {
+    public Player2(int player) {
 
         upAcceleration = false;
         downAcceleration = false;
@@ -18,7 +18,7 @@ public class HumanPaddle implements Paddle{
 
         } else {
 
-            x = 660;
+            x = 860;
 
         }
 
