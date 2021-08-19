@@ -7,6 +7,10 @@ import java.awt.event.KeyListener;
 
 public class Pong extends Applet implements Runnable, KeyListener {
 
+    /**
+     * The applet class. Where everything is brought together.
+     */
+
     final int WIDTH = 900, HEIGHT = 500;
     Thread thread;
     Ball b1;
@@ -15,6 +19,10 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
 
     public void init() {
+
+        /**
+         * Initalizing the applet and all of the classes.
+         */
 
         this.resize(WIDTH, HEIGHT);
         b1 = new Ball();
@@ -28,13 +36,19 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
     public void paint(Graphics g) {
 
+        /**
+         * Paints the screen with the graphics.
+         */
+
         g.setColor(Color.black);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         g.setColor(Color.white);
         g.drawLine(450,0,450, 500);
         if(b1.getX() < -10 || b1.getX() > 860) {
+            g.setColor(Color.black);
+            g.fillRect(0, 0, WIDTH, HEIGHT);
             g.setColor(Color.red);
-            g.drawString("You Lost", WIDTH/2, HEIGHT/2);
+            g.drawString("You Lost", 425, HEIGHT/2);
         } else {
 
             p1.draw(g);
@@ -49,14 +63,21 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
     public void update(Graphics g) {
 
-        paint(g);
+        /**
+         * Updates the screen.
+         */
 
+        paint(g);
 
     }
 
 
     @Override
     public void run() {
+
+        /**
+         * The game loop.
+         */
         while (true) {
 
             b1.move();
@@ -78,10 +99,20 @@ public class Pong extends Applet implements Runnable, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+        /**
+         * Empty.
+         */
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+
+        /**
+         * Player controls.
+         *
+         * @param e the key
+         */
         if(e.getKeyCode() == KeyEvent.VK_UP) {
 
             p1.setUpAccel(true);
@@ -105,6 +136,12 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+        /**
+         * Player controls.
+         *
+         * @param e the key
+         */
 
         if(e.getKeyCode() == KeyEvent.VK_UP) {
 
