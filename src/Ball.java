@@ -7,7 +7,7 @@ public class Ball {
      * The ball on the screen.
      */
 
-    double xVelocity;
+        double xVelocity;
         double yVelocity;
         double x;
         double y;
@@ -22,6 +22,7 @@ public class Ball {
             y = 250;
             xVelocity = ThreadLocalRandom.current().nextInt(-2, 2 + 1);
             yVelocity = ThreadLocalRandom.current().nextInt(-2, 2 + 1);
+
         }
 
         public void draw(Graphics g) {

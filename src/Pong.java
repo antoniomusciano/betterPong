@@ -12,6 +12,7 @@ public class Pong extends Applet implements Runnable, KeyListener {
      */
 
     final int WIDTH = 900, HEIGHT = 500;
+    private boolean running;
     Thread thread;
     Ball b1;
     Player1 p1;
@@ -24,13 +25,18 @@ public class Pong extends Applet implements Runnable, KeyListener {
          * Initalizing the applet and all of the classes.
          */
 
-        this.resize(WIDTH, HEIGHT);
-        b1 = new Ball();
-        p1 = new Player1(1);
-        p2 = new Player2(2);
-        this.addKeyListener(this);
-        thread = new Thread(this);
-        thread.start();
+        if (!running) {
+            running = true;
+            this.resize(WIDTH, HEIGHT);
+            b1 = new Ball();
+            p1 = new Player1(1);
+            p2 = new Player2(2);
+            this.addKeyListener(this);
+            thread = new Thread(this);
+            thread.start();
+        }
+
+
 
     }
 
@@ -49,6 +55,7 @@ public class Pong extends Applet implements Runnable, KeyListener {
             g.fillRect(0, 0, WIDTH, HEIGHT);
             g.setColor(Color.red);
             g.drawString("You Lost", 425, HEIGHT/2);
+
         } else {
 
             p1.draw(g);
@@ -78,7 +85,7 @@ public class Pong extends Applet implements Runnable, KeyListener {
         /**
          * The game loop.
          */
-        while (true) {
+        while (running) {
 
             b1.move();
             p1.move();
@@ -93,6 +100,17 @@ public class Pong extends Applet implements Runnable, KeyListener {
             }
 
 
+        }
+    }
+
+    public void stop() {
+
+        if(running) {
+            running = false;
+            try {
+                thread.join();
+            } catch(Exception e) {
+            }
         }
     }
 
@@ -158,6 +176,7 @@ public class Pong extends Applet implements Runnable, KeyListener {
 
             p2.setDownAccel(false);
         }
+
 
     }
 }
