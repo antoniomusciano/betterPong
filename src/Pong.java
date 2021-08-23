@@ -131,21 +131,21 @@ public class Pong extends Applet implements Runnable, KeyListener {
          *
          * @param e the key
          */
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
+        if(e.getKeyCode() == KeyEvent.VK_Q) {
 
             p1.setUpAccel(true);
 
 
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
 
             p1.setDownAccel(true);
 
 
 
-        } else if (e.getKeyCode() == KeyEvent.VK_Q) {
+        } else if (e.getKeyCode() == KeyEvent.VK_O) {
 
             p2.setUpAccel(true);
-        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+        } else if (e.getKeyCode() == KeyEvent.VK_L) {
 
             p2.setDownAccel(true);
         }
@@ -161,18 +161,18 @@ public class Pong extends Applet implements Runnable, KeyListener {
          * @param e the key
          */
 
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
+        if(e.getKeyCode() == KeyEvent.VK_Q) {
 
             p1.setUpAccel(false);
 
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
 
             p1.setDownAccel(false);
 
-        } else if (e.getKeyCode() == KeyEvent.VK_Q) {
+        } else if (e.getKeyCode() == KeyEvent.VK_O) {
 
             p2.setUpAccel(false);
-        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+        } else if (e.getKeyCode() == KeyEvent.VK_L) {
 
             p2.setDownAccel(false);
         }
